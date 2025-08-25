@@ -4,4 +4,3 @@ import 'package:testing_app/launcher.dart';
 void main() {
   runApp(const Launcher());
 }
-
