@@ -18,7 +18,7 @@ G_DEFINE_TYPE(MyApplication, my_application, GTK_TYPE_APPLICATION)
 static void my_application_activate(GApplication* application) {
   MyApplication* self = MY_APPLICATION(application);
   GtkWindow* window =
-    GTK_WINDOW(gtk_application_window_new(GTK_APPLICATION(application)));
+      GTK_WINDOW(gtk_application_window_new(GTK_APPLICATION(application)));
 
   // Use a header bar when running in GNOME as this is the common style used
   // by applications and is the setup most users will be using (e.g. Ubuntu
@@ -43,8 +43,7 @@ static void my_application_activate(GApplication* application) {
     gtk_header_bar_set_title(header_bar, "testing_app");
     gtk_header_bar_set_show_close_button(header_bar, TRUE);
     gtk_window_set_titlebar(window, GTK_WIDGET(header_bar));
-  }
-  else {
+  } else {
     gtk_window_set_title(window, "testing_app");
   }
 
@@ -71,9 +70,9 @@ static gboolean my_application_local_command_line(GApplication* application, gch
 
   g_autoptr(GError) error = nullptr;
   if (!g_application_register(application, nullptr, &error)) {
-    g_warning("Failed to register: %s", error->message);
-    *exit_status = 1;
-    return TRUE;
+     g_warning("Failed to register: %s", error->message);
+     *exit_status = 1;
+     return TRUE;
   }
 
   g_application_activate(application);
@@ -125,7 +124,7 @@ MyApplication* my_application_new() {
   g_set_prgname(APPLICATION_ID);
 
   return MY_APPLICATION(g_object_new(my_application_get_type(),
-    "application-id", APPLICATION_ID,
-    "flags", G_APPLICATION_NON_UNIQUE,
-    nullptr));
+                                     "application-id", APPLICATION_ID,
+                                     "flags", G_APPLICATION_NON_UNIQUE,
+                                     nullptr));
 }
