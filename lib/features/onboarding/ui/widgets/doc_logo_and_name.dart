@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:testing_app/core/theming/text_styles.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class DocLogoAndName extends StatelessWidget {
   const DocLogoAndName({super.key});
@@ -14,7 +14,7 @@ class DocLogoAndName extends StatelessWidget {
       children: [
         SvgPicture.asset('assets/svgs/docdoc_logo.svg'),
         Gap(10.w),
-        Text('DocDoc', style: TextStyles.font24Wight700Black),
+        'DocDoc'.text.size(24.sp).black.fontWeight(FontWeight.w700).make(),
       ],
     );
   }

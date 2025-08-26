@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:testing_app/core/theming/text_styles.dart';
+import 'package:go_router/go_router.dart';
+import 'package:testing_app/core/routing/routes.dart';
+import 'package:testing_app/core/theming/colors.dart';
+import 'package:testing_app/core/widgets/generic_button.dart';
 import 'package:testing_app/features/onboarding/ui/widgets/doc_img_and_text.dart';
 import 'package:testing_app/features/onboarding/ui/widgets/doc_logo_and_name.dart';
-import 'package:testing_app/features/onboarding/ui/widgets/get_started_button.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -14,23 +17,24 @@ class OnboardingScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 20.w),
-            child: Column(
-              children: [
-                DocLogoAndName(),
-                Gap(30.h),
-                DocImgAndText(),
-                Gap(20.h),
-                Text(
-                  'Manage and schedule all of your medical appointments easily with Docdoc to get a new experience.',
-                  style: TextStyles.font14NormalGray,
-                  textAlign: TextAlign.center,
-                ),
-                Gap(30.h),
-                GetStartedButton(),
-              ],
-            ),
+          padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 20.w),
+          child: Column(
+            children: [
+              DocLogoAndName(),
+              Gap(30.h),
+              DocImgAndText(),
+              Gap(20.h),
+              'Manage and schedule all of your medical appointments easily with Docdoc to get a new experience.'
+                  .text
+                  .size(14.sp)
+                  .color(ColorsManager.gray)
+                  .makeCentered(),
+              Gap(30.h),
+              GenericButton(
+                content: 'Get Started',
+                onPressed: () => context.go(Routes.loginScreen),
+              ),
+            ],
           ),
         ),
       ),
