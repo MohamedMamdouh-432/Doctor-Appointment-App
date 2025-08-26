@@ -1,6 +1,6 @@
 name: testing_app
 description: "A new Flutter project."
-publish_to: 'none' 
+publish_to: "none"
 version: 1.0.0+1
 environment:
   sdk: ^3.8.1
@@ -34,7 +34,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  
+
   # -------- ASSETS IMAGES ------------- #
   assets:
     - assets/images/
