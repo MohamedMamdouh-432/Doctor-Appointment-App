@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:testing_app/core/theming/text_styles.dart';
+import 'package:testing_app/core/theming/colors.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class DocImgAndText extends StatelessWidget {
   const DocImgAndText({super.key});
@@ -18,11 +20,12 @@ class DocImgAndText extends StatelessWidget {
           child: Container(
             alignment: Alignment.center,
             color: Colors.white.withValues(alpha: 0.8),
-            child: Text(
-              'Best Doctor Appointment App',
-              style: TextStyles.font32BoldBlue.copyWith(height: 1.4),
-              textAlign: TextAlign.center,
-            ),
+            child: 'Best Doctor Appointment App'.text
+                .size(32.sp)
+                .color(ColorsManager.mainBlue)
+                .bold
+                .lineHeight(1.4)
+                .makeCentered(),
           ),
         ),
       ],
