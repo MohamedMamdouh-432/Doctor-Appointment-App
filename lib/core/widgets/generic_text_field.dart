@@ -3,19 +3,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:testing_app/core/theming/colors.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class GenericTextField extends StatelessWidget {
+class GenericTextField extends StatefulWidget {
   final String hint;
   final IconData preIcon;
-  final IconData? sufIcon;
-  final bool isObsecure;
+  bool isObsecure;
+  void Function(String) onChanged;
+  String? Function(String?)? validator;
 
-  const GenericTextField({
+  GenericTextField({
     super.key,
     required this.hint,
     required this.preIcon,
-    this.sufIcon,
+    required this.onChanged,
+    this.validator,
     this.isObsecure = false,
   });
+
+  @override
+  State<GenericTextField> createState() => _GenericTextFieldState();
+}
+
+class _GenericTextFieldState extends State<GenericTextField> {
+  bool show = true;
 
   @override
   Widget build(BuildContext context) {
@@ -23,28 +32,46 @@ class GenericTextField extends StatelessWidget {
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: ColorsManager.brighterGray, width: 1.0),
+          borderSide: BorderSide(color: ColorsManager.brighterGray, width: 1.5),
         ),
         focusedBorder: OutlineInputBorder(
           gapPadding: 10.0,
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: ColorsManager.mainBlue, width: 2.0),
+          borderSide: BorderSide(color: ColorsManager.mainBlue, width: 1.5),
         ),
         errorBorder: OutlineInputBorder(
           gapPadding: 10.0,
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: ColorsManager.brightRed, width: 2.0),
+          borderSide: BorderSide(color: ColorsManager.brightRed, width: 1.5),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          gapPadding: 10.0,
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: ColorsManager.brightRed, width: 1.5),
         ),
         filled: true,
         fillColor: ColorsManager.brightestGray,
-        hint: hint.text.size(14.sp).color(ColorsManager.brightGray).make(),
-        prefixIcon: Icon(preIcon, color: ColorsManager.gray),
-        suffixIcon: sufIcon != null
-            ? Icon(sufIcon, color: ColorsManager.gray)
+        hint: widget.hint.text
+            .size(14.sp)
+            .color(ColorsManager.brightGray)
+            .make(),
+        prefixIcon: Icon(widget.preIcon, color: ColorsManager.gray),
+        suffixIcon: widget.isObsecure
+            ? IconButton(
+                onPressed: () => setState(() => show = !show),
+                icon: Icon(
+                  show
+                      ? Icons.visibility_rounded
+                      : Icons.visibility_off_rounded,
+                  color: ColorsManager.gray,
+                ),
+              )
             : null,
       ),
-      obscureText: isObsecure,
+      obscureText: widget.isObsecure ? show : false,
       style: TextStyle(color: ColorsManager.darkBlue, fontSize: 14.sp),
+      onChanged: widget.onChanged,
+      validator: widget.validator,
     );
   }
 }

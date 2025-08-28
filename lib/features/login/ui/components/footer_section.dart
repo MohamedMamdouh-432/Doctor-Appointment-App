@@ -11,7 +11,7 @@ class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 50.h,
+      spacing: 20.h,
       children: [
         Text.rich(
           textAlign: TextAlign.center,

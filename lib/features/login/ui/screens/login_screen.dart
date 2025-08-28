@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:testing_app/features/login/ui/components/footer_section.dart';
 import 'package:testing_app/features/login/ui/components/headline_section.dart';
 import 'package:testing_app/features/login/ui/components/login_form.dart';
 
@@ -16,10 +17,11 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HeadlineSection(), 
-              Gap(40.h), 
+              HeadlineSection(),
+              Gap(40.h),
               LoginForm(),
-              
+              Gap(50.h),
+              FooterSection(),
             ],
           ),
         ),

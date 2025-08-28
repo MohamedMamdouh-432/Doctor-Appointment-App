@@ -28,6 +28,7 @@ dependencies:
   go_router: ^16.2.0
   gap: ^3.0.1
   velocity_x: ^4.3.1
+  formz: ^0.8.0
 
 dev_dependencies:
   flutter_test:
