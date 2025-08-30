@@ -25,7 +25,8 @@ class DocImgAndText extends StatelessWidget {
                 .color(ColorsManager.mainBlue)
                 .bold
                 .lineHeight(1.4)
-                .makeCentered(),
+                .center
+                .make(),
           ),
         ),
       ],
