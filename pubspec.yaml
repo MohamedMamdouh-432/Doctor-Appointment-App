@@ -29,6 +29,8 @@ dependencies:
   gap: ^3.0.1
   velocity_x: ^4.3.1
   formz: ^0.8.0
+  flutter_spinkit: ^5.2.2
+  awesome_dialog: ^3.2.1
 
 dev_dependencies:
   flutter_test:

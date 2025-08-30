@@ -61,8 +61,8 @@ class _GenericTextFieldState extends State<GenericTextField> {
                 onPressed: () => setState(() => show = !show),
                 icon: Icon(
                   show
-                      ? Icons.visibility_rounded
-                      : Icons.visibility_off_rounded,
+                      ? Icons.visibility_off_rounded
+                      : Icons.visibility_rounded,
                   color: ColorsManager.gray,
                 ),
               )

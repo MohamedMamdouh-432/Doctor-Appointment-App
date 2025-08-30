@@ -9,14 +9,13 @@ class LoginCubit extends Cubit<LoginState> {
 
   LoginCubit(this.loginRepo) : super(LoginState.initial());
 
-  void login(LoginRequestBody body) async {
+  void login(LoginRequestBody loginData) async {
     emit(LoginState.loading());
     try {
-      final response = await loginRepo.login(body);
+    final response = await loginRepo.login(loginData);
       response.when(
         success: (data) => emit(LoginState.success(data)),
-        failure: (error) =>
-            emit(LoginState.error(error.failure.message ?? '')),
+        failure: (error) => emit(LoginState.error(error.failure.message ?? '')),
       );
     } catch (e) {
       emit(LoginState.error(e.toString()));

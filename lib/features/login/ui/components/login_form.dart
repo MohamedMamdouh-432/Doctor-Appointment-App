@@ -54,7 +54,6 @@ class _LoginFormState extends State<LoginForm> {
                   .make(),
             ),
           ),
-          // password rules rows
           PasswordCheckLine('At least 8 characters', password.length >= 8),
           PasswordCheckLine(
             'At least one uppercase letter',
@@ -75,9 +74,12 @@ class _LoginFormState extends State<LoginForm> {
           Gap(50.h),
           GenericButton(
             content: 'Login',
-            onPressed: () => context.read<LoginCubit>().login(
-              LoginRequestBody(email: email, password: password),
-            ),
+            onPressed: () {
+              if (!_formKey.currentState!.validate()) return;
+              context.read<LoginCubit>().login(
+                LoginRequestBody(email: email, password: password),
+              );
+            },
           ),
         ],
       ),
