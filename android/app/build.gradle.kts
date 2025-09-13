@@ -30,6 +30,21 @@ android {
         release {
             signingConfig = signingConfigs.getByName("debug")
         }
+        // debug {
+        //     signingConfig = signingConfigs.getByName("release")
+        // }
+    }
+    
+    flavorDimensions += "default"
+    productFlavors {
+        create("staging") {
+            dimension = "default"
+            applicationIdSuffix = ".staging"
+        }
+        create("production") {
+            dimension = "default"
+            applicationIdSuffix = ".production"
+        }
     }
 }
 
