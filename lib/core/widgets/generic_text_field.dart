@@ -6,11 +6,11 @@ import 'package:velocity_x/velocity_x.dart';
 class GenericTextField extends StatefulWidget {
   final String hint;
   final IconData preIcon;
-  bool isObsecure;
-  void Function(String) onChanged;
-  String? Function(String?)? validator;
+  final bool isObsecure;
+  final void Function(String) onChanged;
+  final String? Function(String?)? validator;
 
-  GenericTextField({
+  const GenericTextField({
     super.key,
     required this.hint,
     required this.preIcon,

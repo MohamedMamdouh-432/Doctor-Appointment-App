@@ -37,13 +37,22 @@ android {
     
     flavorDimensions += "default"
     productFlavors {
-        create("staging") {
-            dimension = "default"
-            applicationIdSuffix = ".staging"
-        }
         create("production") {
             dimension = "default"
-            applicationIdSuffix = ".production"
+            resValue(
+                type="string", 
+                name="app_name", 
+                value="DocDoc Production"
+            )
+        }
+        create("development") {
+            dimension = "default"
+            applicationIdSuffix = ".dev"
+            resValue(
+                type="string", 
+                name="app_name", 
+                value="DocDoc Development"
+            )
         }
     }
 }
