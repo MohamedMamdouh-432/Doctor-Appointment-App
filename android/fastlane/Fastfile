@@ -1,0 +1,24 @@
+default_platform(:android)
+
+platform :android do
+  
+  desc "Deploy to Firebase App Distribution"
+  lane :fb_deploy do
+    
+    UI.message("Running flutter clean...")
+    sh "flutter clean"
+
+    UI.message("Building production release APK with no-tree-shake-icons...")
+    sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons"
+
+    UI.message("Uploading production build to Firebase App Distribution...")
+    firebase_app_distribution(
+      app: "1:38813777969:android:f0513f30e588c47a1f1510",
+      firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"], 
+      android_artifact_type: "APK",
+      android_artifact_path: "/home/mohamed/Desktop/Flutter/doctor_appointment_app/build/app/outputs/flutter-apk/app-production-release.apk",
+      testers: "mohamedmsalah396@gmail.com",
+      release_notes: "First Fastlane Firebase App Distribution"
+    )
+  end
+end
