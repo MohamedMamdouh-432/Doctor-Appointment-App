@@ -12,10 +12,10 @@ jobs:
       - name: Checkout Repo Code
         uses: actions/checkout@v2
         
-      - name: Setup Java JDK 11
+      - name: Setup Java JDK 17
         uses: actions/setup-java@v2
         with:
-          java-version: "11"
+          java-version: "17"
           distribution: "temurin"
           
       - name: Install Stable Flutter
