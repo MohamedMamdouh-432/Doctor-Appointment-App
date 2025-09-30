@@ -1,5 +1,8 @@
 plugins {
     id("com.android.application")
+    // START: FlutterFire Configuration
+    id("com.google.gms.google-services")
+    // END: FlutterFire Configuration
     id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
 }
@@ -29,6 +32,30 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("debug")
+        }
+        // debug {
+        //     signingConfig = signingConfigs.getByName("release")
+        // }
+    }
+    
+    flavorDimensions += "default"
+    productFlavors {
+        create("production") {
+            dimension = "default"
+            resValue(
+                type="string", 
+                name="app_name", 
+                value="DocDoc Production"
+            )
+        }
+        create("development") {
+            dimension = "default"
+            applicationIdSuffix = ".dev"
+            resValue(
+                type="string", 
+                name="app_name", 
+                value="DocDoc Development"
+            )
         }
     }
 }
