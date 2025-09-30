@@ -9,7 +9,10 @@ platform :android do
       app: "1:38813777969:android:f0513f30e588c47a1f1510",
       firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"]
     )
-    increment_version_code({ version_code: latest_release[:buildVersion].to_i + 1 })
+    current_version = latest_release[:version].to_i
+    new_version = current_version + 1
+    UI.message("Current Version code: #{current_version} , New Version code: #{new_version}")
+    increment_version_code({ version_code: new_version })
     
     sh "flutter clean"
     sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons"
