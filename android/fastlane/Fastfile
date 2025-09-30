@@ -4,10 +4,10 @@ platform :android do
 
   desc "Deploy to Firebase App Distribution"
   lane :fb_deploy do
-    
     UI.message("Fetching latest build version from Firebase App Distribution...")
     latest_release = firebase_app_distribution_get_latest_release(
-      app: "1:38813777969:android:f0513f30e588c47a1f1510"
+      app: "1:38813777969:android:f0513f30e588c47a1f1510",
+      firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"]
     )
     increment_version_code({ version_code: latest_release[:buildVersion].to_i + 1 })
     
