@@ -6,12 +6,10 @@ platform :android do
   lane :fb_deploy do
     
     UI.message("Fetching latest build version from Firebase App Distribution...")
-    latest_release = firebase_app_distribution_get_latest_release(app: "1:38813777969:android:f0513f30e588c47a1f1510")
-    
-    current_build_version = latest_release ? latest_release[:buildVersion].to_i : 0
-    new_build_version = current_build_version + 1
-
-    increment_version_code(version_code: new_build_version)
+    latest_release = firebase_app_distribution_get_latest_release(
+      app: "1:38813777969:android:f0513f30e588c47a1f1510"
+    )
+    increment_version_code({ version_code: latest_release[:buildVersion].to_i + 1 })
     
     sh "flutter clean"
     sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons"
@@ -23,7 +21,7 @@ platform :android do
       android_artifact_type: "APK",
       android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk", 
       testers: "mohamedmsalah396@gmail.com",
-      release_notes: "New Version Published to testing : V#{new_build_version}" 
+      release_notes: "New Version Published! Ready for Testing! 🧑‍💻" 
     )
   end
 end
