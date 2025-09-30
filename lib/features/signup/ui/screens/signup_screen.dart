@@ -6,20 +6,20 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:testing_app/core/routing/routes.dart';
-import 'package:testing_app/features/login/logic/cubit/login_cubit.dart';
-import 'package:testing_app/features/login/logic/cubit/login_state.dart';
-import 'package:testing_app/features/login/ui/components/footer_section.dart';
-import 'package:testing_app/features/login/ui/components/headline_section.dart';
-import 'package:testing_app/features/login/ui/components/login_form.dart';
+import 'package:testing_app/features/signup/logic/cubit/signup_cubit.dart';
+import 'package:testing_app/features/signup/logic/cubit/signup_state.dart';
+import 'package:testing_app/features/signup/ui/components/footer_section.dart';
+import 'package:testing_app/features/signup/ui/components/headline_section.dart';
+import 'package:testing_app/features/signup/ui/components/signup_form.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: BlocListener<LoginCubit, LoginState>(
+        child: BlocListener<SignupCubit, SignupState>(
           listenWhen: (p, c) => c is Loading || c is Success || c is Error,
           listener: (context, state) {
             state.whenOrNull(
@@ -33,13 +33,13 @@ class LoginScreen extends StatelessWidget {
                 AwesomeDialog(
                   context: context,
                   dialogType: DialogType.success,
-                  title: 'Login Success',
-                  desc: 'Welcome Back!',
+                  title: 'Account Created Successfully',
+                  desc: 'Login and Get Started!',
                   btnOkText: 'Ok',
                 ).show();
                 Future.delayed(
                   const Duration(seconds: 2),
-                  () => context.go(Routes.homeScreen),
+                  () => context.go(Routes.loginScreen),
                 );
               },
               error: (message) {
@@ -47,7 +47,7 @@ class LoginScreen extends StatelessWidget {
                 AwesomeDialog(
                   context: context,
                   dialogType: DialogType.error,
-                  title: 'Login Error',
+                  title: 'Sign Up Error',
                   desc: message,
                   btnCancelText: 'Close',
                 ).show();
@@ -61,8 +61,8 @@ class LoginScreen extends StatelessWidget {
               children: [
                 HeadlineSection(),
                 Gap(40.h),
-                LoginForm(),
-                Gap(50.h),
+                SignupForm(),
+                Gap(30.h),
                 FooterSection(),
               ],
             ),

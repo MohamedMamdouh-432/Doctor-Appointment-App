@@ -19,7 +19,7 @@ class FooterSection extends StatelessWidget {
             style: TextStyle(fontSize: 13.sp),
             children: [
               TextSpan(
-                text: 'By logging, you agree to our ',
+                text: 'By signing up, you agree to our ',
                 style: TextStyle(color: ColorsManager.brightGray),
               ),
               TextSpan(
@@ -31,7 +31,7 @@ class FooterSection extends StatelessWidget {
                 style: TextStyle(color: ColorsManager.brightGray),
               ),
               TextSpan(
-                text: 'PrivacyPolicy.',
+                text: 'Privacy Policy.',
                 style: TextStyle(color: Colors.black),
               ),
             ],
@@ -43,17 +43,17 @@ class FooterSection extends StatelessWidget {
             style: TextStyle(fontSize: 15.sp),
             children: [
               TextSpan(
-                text: 'Don\'t have an account? ',
+                text: 'Already have an account? ',
                 style: TextStyle(color: Colors.black),
               ),
               TextSpan(
-                text: 'Sign Up',
+                text: 'Login',
                 style: TextStyle(
                   color: ColorsManager.mainBlue,
                   fontWeight: FontWeight.bold,
                 ),
                 recognizer: TapGestureRecognizer()
-                  ..onTap = () => context.push(Routes.signupScreen),
+                  ..onTap = () => context.push(Routes.loginScreen),
               ),
             ],
           ),
