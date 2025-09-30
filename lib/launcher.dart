@@ -4,6 +4,7 @@ import 'package:testing_app/core/routing/app_router.dart';
 import 'package:testing_app/core/theming/colors.dart';
 
 class Launcher extends StatelessWidget {
+  
   const Launcher({super.key});
 
   @override
