@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
+import 'package:testing_app/features/home/ui/components/doctor_speciality_series.dart';
+import 'package:testing_app/features/home/ui/components/doctors_list.dart';
 import 'package:testing_app/features/home/ui/components/home_top_bar.dart';
 import 'package:testing_app/features/home/ui/components/nearby_doctor_card.dart';
 
@@ -18,6 +21,9 @@ class HomeScreen extends StatelessWidget {
             children: [
               HomeTopBar(),
               NearbyDoctorCard(),
+              DoctorSpecialitySeries(),
+              Gap(10.sp),
+              DoctorsList(),
             ],
           ),
         ),
