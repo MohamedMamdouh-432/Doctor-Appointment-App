@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:testing_app/features/home/ui/components/home_top_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,7 +8,18 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: "Home Screen".text.xl3.makeCentered()),
+      body: SafeArea(
+        child: Container(
+          width: double.infinity,
+          margin: EdgeInsets.fromLTRB(20.sp, 16.sp, 20.sp, 30.sp),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HomeTopBar(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
