@@ -11,4 +11,6 @@ class ColorsManager {
   static const Color darkBlue = Color(0xFF242424);
   // Red Colors
   static const Color brightRed = Color(0xFFEE4B2B);
+  // Yellow Colors
+  static const Color mainYellow = Color(0xFFFFD600);
 }

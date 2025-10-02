@@ -15,7 +15,7 @@ const doctors = [
     "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSleborUKlDqo2xbo3qSyXDV1Fs8B-4M9v6og&s"
   },
   {
-    "name": "Dr. Christopher M. Cooper",
+    "name": "Dr. Christopher",
     "speciality": "Neurologic",
     "workplace": "RSUD Gatot Subroto",
     "rating": 4.9,
@@ -23,7 +23,7 @@ const doctors = [
     "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj4GBn8hcw3nGPAAketoOypBQZV_P0QOBGjg&s"
   },
   {
-    "name": "Dr. Jennifer L. Jones",
+    "name": "Dr. Jennifer",
     "speciality": "Pediatric",
     "workplace": "RSUD Gatot Subroto",
     "rating": 4.7,
@@ -31,7 +31,7 @@ const doctors = [
     "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvxqeT3EgjGLrIn1ZUepCKpPui0ea5I6RcxQ&s"
   },
   {
-    "name": "Dr. Brian M. Kennedy",
+    "name": "Dr. Brian",
     "speciality": "Radiology",
     "workplace": "RSUD Gatot Subroto",
     "rating": 4.6,
@@ -39,7 +39,7 @@ const doctors = [
     "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwAgFV3AJ4N_gMQbJ-5eqIzCyKivV4Ak4UwQ&s"
   },
   {
-    "name": "Dr. David M. Lai",
+    "name": "Dr. David",
     "speciality": "Neurologic",
     "workplace": "RSUD Gatot Subroto",
     "rating": 4.8,
@@ -47,7 +47,7 @@ const doctors = [
     "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_y8yKu3xLWNfMn_KB_CuRmAA-66asINIbHA&s"
   },
   {
-    "name": "Dr. Sarah E. Lee",
+    "name": "Dr. Sarah",
     "speciality": "Radiology",
     "workplace": "RSUD Gatot Subroto",
     "rating": 4.7,
