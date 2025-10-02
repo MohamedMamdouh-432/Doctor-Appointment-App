@@ -1,8 +1,6 @@
 plugins {
     id("com.android.application")
-    // START: FlutterFire Configuration
     id("com.google.gms.google-services")
-    // END: FlutterFire Configuration
     id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
 }
@@ -23,7 +21,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.testing_app"
-        minSdk = flutter.minSdkVersion
+        minSdk = 23
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -33,9 +31,6 @@ android {
         release {
             signingConfig = signingConfigs.getByName("debug")
         }
-        // debug {
-        //     signingConfig = signingConfigs.getByName("release")
-        // }
     }
     
     flavorDimensions += "default"
@@ -50,7 +45,7 @@ android {
         }
         create("development") {
             dimension = "default"
-            applicationIdSuffix = ".dev"
+            // applicationIdSuffix = ".dev"
             resValue(
                 type="string", 
                 name="app_name", 
