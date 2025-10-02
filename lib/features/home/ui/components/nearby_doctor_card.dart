@@ -15,7 +15,7 @@ class NearbyDoctorCard extends StatelessWidget {
           width: double.infinity,
           height: 170.h,
           padding: EdgeInsets.symmetric(horizontal: 20.sp, vertical: 16.sp),
-          margin: EdgeInsets.symmetric(vertical: 35.sp),
+          margin: EdgeInsets.only(top: 35.h, bottom: 20.h),
           decoration: BoxDecoration(
             color: ColorsManager.mainBlue,
             borderRadius: BorderRadius.circular(24.sp),

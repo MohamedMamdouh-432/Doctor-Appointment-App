@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:testing_app/core/di/dependency_injection.dart';
 import 'package:testing_app/core/routing/routes.dart';
+import 'package:testing_app/features/home/logic/cubit/home_cubit.dart';
 import 'package:testing_app/features/home/ui/screens/home_screen.dart';
 import 'package:testing_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:testing_app/features/login/ui/screens/login_screen.dart';
@@ -18,17 +19,25 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: Routes.loginScreen,
       builder: (context, state) => BlocProvider(
-        create: (context) => getIt<LoginCubit>(),
+        create: (context) => LoginCubit(getIt()),
         child: const LoginScreen(),
       ),
     ),
     GoRoute(
       path: Routes.signupScreen,
       builder: (context, state) => BlocProvider(
-        create: (context) => getIt<SignupCubit>(),
+        create: (context) => SignupCubit(getIt()),
         child: SignupScreen(),
       ),
     ),
-    GoRoute(path: Routes.homeScreen, builder: (context, state) => HomeScreen()),
+    GoRoute(
+      path: Routes.homeScreen,
+      builder: (context, state) => BlocProvider(
+        create: (context) => HomeCubit(getIt())
+          ..fetchAllSpecialities()
+          ..fetchAllDoctors(),
+        child: HomeScreen(),
+      ),
+    ),
   ],
 );
