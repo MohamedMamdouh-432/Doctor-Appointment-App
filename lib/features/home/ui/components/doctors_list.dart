@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:testing_app/core/helpers/dummy.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:testing_app/core/theming/colors.dart';
+import 'package:testing_app/features/home/data/models/load_status.dart';
+import 'package:testing_app/features/home/logic/cubit/home_cubit.dart';
 import 'package:testing_app/features/home/ui/widgets/doctor_item.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -28,10 +31,20 @@ class DoctorsList extends StatelessWidget {
               ),
             ],
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: doctors.length,
-              itemBuilder: (c, i) => DoctorItem(doctors[i]),
+          BlocBuilder<HomeCubit, HomeState>(
+            buildWhen: (p, c) => p != c && c.doctorsLoadStatus.isSuccess,
+            builder: (context, state) => Expanded(
+              child: Skeletonizer(
+                enabled: state.doctorsLoadStatus.contain([
+                  LoadStatus.initial,
+                  LoadStatus.loading,
+                ]),
+                child: ListView.builder(
+                  itemCount: state.doctorsResponse.doctors?.length ?? 0,
+                  itemBuilder: (c, i) =>
+                      DoctorItem(state.doctorsResponse.doctors![i]),
+                ),
+              ),
             ),
           ),
         ],
