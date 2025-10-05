@@ -45,7 +45,7 @@ class NearbyDoctorCard extends StatelessWidget {
         Positioned(
           right: 15.sp,
           top: 0,
-          bottom: 35.sp,
+          bottom: 20.sp,
           child: Container(
             width: 140.sp,
             decoration: BoxDecoration(

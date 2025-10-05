@@ -44,7 +44,7 @@ class HomeCubit extends Cubit<HomeState> {
       );
     }
   }
-  
+
   void fetchAllDoctors() async {
     try {
       emit(state.copyWith(doctorsLoadStatus: LoadStatus.loading));
@@ -54,14 +54,13 @@ class HomeCubit extends Cubit<HomeState> {
           state.copyWith(
             doctorsLoadStatus: LoadStatus.success,
             doctorsResponse: dr,
+            doctors: dr.doctors ?? [],
           ),
         ),
         failure: (error) => emit(
           state.copyWith(
             doctorsLoadStatus: LoadStatus.error,
-            doctorsResponse: DoctorsResponse(
-              message: error.failure.message,
-            ),
+            doctorsResponse: DoctorsResponse(message: error.failure.message),
           ),
         ),
       );
@@ -69,9 +68,30 @@ class HomeCubit extends Cubit<HomeState> {
       emit(
         state.copyWith(
           doctorsLoadStatus: LoadStatus.error,
-          doctorsResponse: DoctorsResponse(
-            message: e.toString(),
-          ),
+          doctorsResponse: DoctorsResponse(message: e.toString()),
+        ),
+      );
+    }
+  }
+
+  void filterDoctorsBySpeciality(Specialization speciality) async {
+    try {
+      final doctors = state.doctorsResponse.doctors;
+      emit(state.copyWith(doctorsLoadStatus: LoadStatus.loading));
+      final filteredDoctors = doctors!
+          .where((doc) => doc.specialization!.id == speciality.id)
+          .toList();
+      emit(
+        state.copyWith(
+          doctorsLoadStatus: LoadStatus.success,
+          doctors: filteredDoctors,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          doctorsLoadStatus: LoadStatus.error,
+          doctorsResponse: DoctorsResponse(message: e.toString()),
         ),
       );
     }

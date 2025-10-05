@@ -40,9 +40,8 @@ class DoctorsList extends StatelessWidget {
                   LoadStatus.loading,
                 ]),
                 child: ListView.builder(
-                  itemCount: state.doctorsResponse.doctors?.length ?? 0,
-                  itemBuilder: (c, i) =>
-                      DoctorItem(state.doctorsResponse.doctors![i]),
+                  itemCount: state.doctors.length,
+                  itemBuilder: (c, i) => DoctorItem(state.doctors[i]),
                 ),
               ),
             ),

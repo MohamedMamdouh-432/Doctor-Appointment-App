@@ -3,12 +3,14 @@ part of 'home_cubit.dart';
 class HomeState extends Equatable {
   final SpecializationsResponse specializationsResponse;
   final DoctorsResponse doctorsResponse;
+  final List<Doctor> doctors;
   final LoadStatus specializationsLoadStatus;
   final LoadStatus doctorsLoadStatus;
 
   const HomeState({
     required this.specializationsResponse,
     required this.doctorsResponse,
+    required this.doctors,
     required this.specializationsLoadStatus,
     required this.doctorsLoadStatus,
   });
@@ -16,6 +18,7 @@ class HomeState extends Equatable {
   static HomeState initial = HomeState(
     specializationsResponse: SpecializationsResponse(),
     doctorsResponse: DoctorsResponse(),
+    doctors: [],
     specializationsLoadStatus: LoadStatus.initial,
     doctorsLoadStatus: LoadStatus.initial
   );
@@ -23,6 +26,7 @@ class HomeState extends Equatable {
   HomeState copyWith({
     SpecializationsResponse? specializationsResponse,
     DoctorsResponse? doctorsResponse,
+    List<Doctor>? doctors,
     LoadStatus? specializationsLoadStatus,
     LoadStatus? doctorsLoadStatus,
   }) {
@@ -30,6 +34,7 @@ class HomeState extends Equatable {
       specializationsResponse:
           specializationsResponse ?? this.specializationsResponse,
       doctorsResponse: doctorsResponse ?? this.doctorsResponse,
+      doctors: doctors ?? this.doctors,
       specializationsLoadStatus:
           specializationsLoadStatus ?? this.specializationsLoadStatus,
       doctorsLoadStatus: doctorsLoadStatus ?? this.doctorsLoadStatus,
@@ -48,6 +53,7 @@ class HomeState extends Equatable {
   List<Object> get props => [
     specializationsResponse,
     doctorsResponse,
+    doctors,
     specializationsLoadStatus,
     doctorsLoadStatus,
   ];

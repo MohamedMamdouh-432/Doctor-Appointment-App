@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
           },
           child: Container(
             width: double.infinity,
-            margin: EdgeInsets.fromLTRB(20.sp, 16.sp, 20.sp, 30.sp),
+            margin: EdgeInsets.fromLTRB(20.sp, 16.sp, 20.sp, 0.sp),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

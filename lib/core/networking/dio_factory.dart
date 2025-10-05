@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:testing_app/core/helpers/cache_helper.dart';
+import 'package:testing_app/core/helpers/constants.dart';
 
 class DioFactory {
   DioFactory._();
@@ -23,15 +25,17 @@ class DioFactory {
   }
 
   static void addDioHeaders() async {
+    final String token =
+        (await CacheHelper.getSecuredString(Constants.userToken) as String);
     dio?.options.headers = {
       'Accept': 'application/json',
-      'Authorization':
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3ZjYXJlLmludGVncmF0aW9uMjUuY29tL2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNzU5NDMyMTY0LCJleHAiOjE3NTk1MTg1NjQsIm5iZiI6MTc1OTQzMjE2NCwianRpIjoiZU45bDVZOW40UnJBYjRqMyIsInN1YiI6IjUwNjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.t6Pqaw4uF_Fwd25vgXJbzAn3eZaSG4hZOfAkWOvWVAw',
+      'Authorization': 'Bearer $token',
     };
   }
 
-  static void setTokenIntoHeaderAfterLogin(String token) {
+  static void setUpdatedToken(String token) {
     dio?.options.headers = {
+      'Accept': 'application/json',
       'Authorization': 'Bearer $token',
     };
   }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:testing_app/core/helpers/cache_helper.dart';
+import 'package:testing_app/core/helpers/constants.dart';
 import 'package:testing_app/core/routing/routes.dart';
 import 'package:testing_app/core/theming/colors.dart';
 import 'package:testing_app/core/widgets/generic_button.dart';
@@ -32,7 +34,10 @@ class OnboardingScreen extends StatelessWidget {
               Gap(30.h),
               GenericButton(
                 content: 'Get Started',
-                onPressed: () => context.go(Routes.loginScreen),
+                onPressed: () async {
+                  await CacheHelper.setData(Constants.seenBefore, true);
+                  context.go(Routes.loginScreen);
+                },
               ),
             ],
           ),
