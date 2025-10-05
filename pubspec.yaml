@@ -33,6 +33,11 @@ dependencies:
   awesome_dialog: ^3.2.1
   intl_phone_field: ^3.2.0
   firebase_core: ^4.1.0
+  equatable: ^2.0.7
+  skeletonizer: ^2.1.0+1
+  cached_network_image: ^3.4.1
+  shared_preferences: ^2.5.3
+  flutter_secure_storage: ^9.2.4
 
 dev_dependencies:
   flutter_test:
